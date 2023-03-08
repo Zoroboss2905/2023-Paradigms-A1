@@ -1,1 +1,4 @@
-points.size() not working
+points.size() not working || is supposed to be points.length
+
+when declaring variables state the type of the variable first (String, int, double, Node etc.)
+

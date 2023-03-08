@@ -40,4 +40,10 @@ public class Point{
         double distance = Math.sqrt((x*x) + (y*y));
         return distance;
     }
+
+    // Returns information pertaining to each Point's Co-ordinates on a Cartesian Plane. "(0,0)"
+    public String toString(){
+        String output = "("+String.format("%4.2f",x)+","+String.format("%4.2f",y)+")";
+        return output;
+    }
 }

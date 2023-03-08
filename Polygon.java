@@ -48,7 +48,14 @@ public class Polygon{
 
     // Outputs a String that contains infor on each coordinate of each point, in addition to the Polygon's Area
     public String toString(){
-        return "";
+        String output = "[";
+        // For each point, add the point's coordinates to the String
+        for(int i=0; i<points.length; i++){
+            output = output + points[i].toString();
+        }
+        // Finally, cap off the points list, and append the area.
+        output = output + "]: "+String.format("%6.2f",area());
+        return output;
     }
 
 }
