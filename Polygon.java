@@ -5,7 +5,7 @@
 // 03/03/2023
 
 
-public class Polygon{
+public class Polygon implements ComparePoly{
 
     // Private Variables
     private Point[] points;
@@ -40,7 +40,7 @@ public class Polygon{
     // Find the Area of the polygon.
     public double area(){
         double area = 0;
-
+        //TODO carefuly craft an area function based on the formula given to us in the spec
 
 
         return area;
@@ -57,5 +57,56 @@ public class Polygon{
         output = output + "]: "+String.format("%6.2f",area());
         return output;
     }
+
+
+    // Return true of the current polygon is larger than (and should come before) the polygon being checked
+    // Return false if the current polyon is smaller than (and should come after) the polygon being checked
+    public boolean ComesBefore(Object o){
+        double difference = this.area() - o.area();
+
+        if (difference < 0){
+            // o is bigger, check difference to 0.1% of 'this'
+            if(Math.abs(difference) < (this.area()*0.001)){
+                //the difference is smaller than 0.1%, find the closer one.
+                if(this.dist()<o.dist()){
+                    // 'this' is closer to 0,0, therefore goes first
+                    return true;
+                } else {
+                    // o is closer to 0,0, therefore goes first
+                    return false;
+                }
+            } else{
+                // the difference is larger than 0.1%, o goes first.
+                return false;
+            }
+        } else if (Math.abs(difference) > 0){
+            // this is bigger, check difference to 0.1% of o
+            if(difference < (o.area()*0.001)){
+                //the difference is smaller than 0.1%, find the closer one.
+                if(this.dist()<o.dist()){
+                    // 'this' is closer to 0,0, therefore goes first
+                    return true;
+                } else {
+                    // o is closer to 0,0, therefore goes first
+                    return false;
+                }
+            } else{
+                // the difference is larger than 0.1%, 'this' goes first.
+                return true;
+            }
+        } else {
+            // they are exactly the same size, find which one is closer.
+            if(this.dist()<o.dist()){
+                // 'this' is closer to 0,0, therefore goes first
+                return true;
+            } else {
+                // o is closer to 0,0, therefore goes first
+                return false;
+            }
+        }
+    }
+
+    // Create an Abstract Class that basically makes Polygons into Objects
+
 
 }

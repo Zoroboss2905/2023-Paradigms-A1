@@ -38,7 +38,13 @@ public class MyPolygons {
 
     }
 
-    public void insertInOrder(){
-        
+    public void insertInOrder(Polygon newPoly){
+        for(int i=0; i<this.getSize(); i++){
+            current.getPoly().ComesBefore(newPoly);
+        }
+
     }
+
+
+
 }
