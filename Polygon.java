@@ -61,7 +61,7 @@ public class Polygon implements ComparePoly{
 
     // Return true of the current polygon is larger than (and should come before) the polygon being checked
     // Return false if the current polyon is smaller than (and should come after) the polygon being checked
-    public boolean ComesBefore(Object o){
+    public boolean ComesBefore(Polygon o){
         double difference = this.area() - o.area();
 
         if (difference < 0){
