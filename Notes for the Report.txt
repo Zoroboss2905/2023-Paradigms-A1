@@ -3,3 +3,5 @@ points.size() not working || is supposed to be points.length
 when declaring variables state the type of the variable first (String, int, double, Node etc.)
 
 Fundamental understanding of interfaces was flawed. x3
+
+fixed the ComesBefore() function in polygons so that it only takes up 16 lines rather than 39

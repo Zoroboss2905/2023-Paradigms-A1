@@ -30,8 +30,10 @@ public class MyPolygons {
 
     // Methods
 
-    public void insert(){
-
+    public void insert(Polygon newPoly){
+        // put it at the end of the list, meaning:
+        // set new node prev to sentinel.prev, set sentinel.prev.next to new node, set new node.next to sentinel set sentinel.prev to new node. done
+        // basically an append, but this is the default insert
     }
 
     public void remove(){
@@ -39,12 +41,20 @@ public class MyPolygons {
     }
 
     public void insertInOrder(Polygon newPoly){
+        current = sentinel.getNext();
         for(int i=0; i<this.getSize(); i++){
-            current.getPoly().ComesBefore(newPoly);
+            if(current.getPoly().ComesBefore(newPoly)){
+                current = current.getNext();
+            } else{
+                // This new polygon has to go into a node that fits before 'current'
+            }
         }
 
     }
 
-
-
+    public String toString(){
+        String output = "";
+        // TODO
+        return output;
+    }
 }
