@@ -40,11 +40,16 @@ public class Polygon implements ComparePoly{
 
     // Find the Area of the polygon.
     public double area(){
+        double totalArea = 0;
         double area = 0;
-        //TODO carefuly craft an area function based on the formula given to us in the spec
+        //TODO verify the area function is correct (i donty know what the n-2 is for in the equation)
         
+        for(int i = 0; i < points.length; i++){
+            area = area + (points[i+1].getX()+points[i].getX())*(points[i+1].getY()-points[i].getY());
+        }
 
-        return area;
+        totalArea = Math.abs(area)/2;
+        return totalArea;
     }
 
     // Outputs a String that contains infor on each coordinate of each point, in addition to the Polygon's Area
