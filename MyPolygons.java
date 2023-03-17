@@ -9,13 +9,15 @@ public class MyPolygons {
     
     // MyPolygons is a Circular Doubly Linked List (with sentinel Node) that consists of Nodes, each containing data representative of a polygon
     // Variables
-    private Node sentinel;
+    private Node sentinel = new Node(null, null, null);
     private Node current;
     private int size;
     
     // Constructor
     MyPolygons(){
         setSize(0);
+        sentinel.setNext(sentinel);
+        sentinel.setPrev(sentinel);
     }
 
     // Getters & Setters
@@ -37,6 +39,7 @@ public class MyPolygons {
         tempNode.setNext(sentinel.getNext());
         sentinel.getNext().setPrev(tempNode);
         sentinel.setNext(tempNode);
+        size++;
     }
 
     // Add item to the end of the list (before sentienl, after last)
@@ -46,6 +49,7 @@ public class MyPolygons {
         tempNode.setNext(sentinel);
         sentinel.getPrev().setNext(tempNode);
         sentinel.setPrev(tempNode);
+        size++;
     }
 
     // Move the 'current' to the next Node
@@ -73,6 +77,7 @@ public class MyPolygons {
         current.setPrev(null);
         // return polygon
         reset();
+        size--;
         return tempNode.getPoly();
     }
 
@@ -83,17 +88,29 @@ public class MyPolygons {
         tempNode.setPrev(current.getPrev());
         tempNode.setNext(current);
         current.setPrev(tempNode);
+        size++;
     }
 
     // Finds the location that the new Polygon should sit in the list, then calls on insert() to place it in the list.
     public void insertInOrder(Polygon newPoly){
         reset();
+        if(size==0){
+            insert(newPoly);
+        }
         next();
+
+        // check entire list, find where it needs to go
+        // if it does not find a spot where it fits, and the next node is the sentinel, then append it to the list.
+
         for(int i=0; i<size; i++){
-            if(current.getPoly().ComesBefore(newPoly)){
-                next();
-            } else{
+            if(current.getNext() == sentinel){
+                append(newPoly);
+                break;
+            } else if (current.getPoly().ComesBefore(newPoly) == false){
                 insert(newPoly);
+                break;
+            } else {
+                next();
             }
         }
     }
@@ -102,8 +119,9 @@ public class MyPolygons {
     public String toString(){
         String output = "";
         reset();
+        next();
         for(int i = 0; i < size; i++){
-            output = output + current.getPoly().toString();
+            output = output + current.getPoly().toString() + "\n";
             next();
         }
         return output;

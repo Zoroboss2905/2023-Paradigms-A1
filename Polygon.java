@@ -18,11 +18,6 @@ public class Polygon implements ComparePoly{
         points = newPoints;
     }
 
-
-    // Getters & Setters
-
-
-
     // Methods    
     // Find the Point that is the closest to the origin, return the distance of that point.
     public double dist(){
@@ -42,12 +37,9 @@ public class Polygon implements ComparePoly{
     public double area(){
         double totalArea = 0;
         double area = 0;
-        //TODO verify the area function is correct (i donty know what the n-2 is for in the equation)
-        
-        for(int i = 0; i < points.length; i++){
+        for(int i = 0; i < points.length-1; i++){
             area = area + (points[i+1].getX()+points[i].getX())*(points[i+1].getY()-points[i].getY());
         }
-
         totalArea = Math.abs(area)/2;
         return totalArea;
     }
@@ -56,7 +48,7 @@ public class Polygon implements ComparePoly{
     public String toString(){
         String output = "[";
         // For each point, add the point's coordinates to the String
-        for(int i=0; i<points.length; i++){
+        for(int i=0; i<points.length-1; i++){
             output = output + points[i].toString();
         }
         // Finally, cap off the points list, and append the area.
