@@ -63,22 +63,22 @@ public class Polygon implements ComparePoly{
         double difference = this.area() - o.area();
         double max = Math.max(this.area(), o.area());
         // if the difference is miniscule, check distance instead
-        if(max*0.001 < Math.abs(difference) ){
+        if(Math.abs(difference) < max*0.001 ){
             if (this.dist() < o.dist()){
                 // 'this' is closer, thus is first
-                return true;
+                return false;
             }   else {
                 // 'o' is closer, thus is first
-                return false;
+                return true;
             }
         }
         // if difference is larger than 0.1% then check area 
         else{
             if(this.area() < o.area()){
-                // 'o' is larger, thus is closer
+                // 'o' is larger, thus is after 'this'
                 return false;
             } else{
-                // 'this' is larger, thus is closer
+                // 'this' is larger, thus is after 'o'
                 return true;
             }
         }

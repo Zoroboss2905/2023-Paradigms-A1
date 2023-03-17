@@ -11,8 +11,7 @@ import java.util.Scanner;
 public class A1 {
     public static void main(String args[]){
 
-        //File file = new File(args[0]);
-        File file = new File("sample_in.txt");
+        File file = new File(args[0]);
         try{
             Scanner inputFile = new Scanner(file);
 
@@ -31,12 +30,10 @@ public class A1 {
                         tempPoint.setX(inputFile.nextDouble());
                         tempPoint.setY(inputFile.nextDouble());
                         newPoints[i] = tempPoint;
-                        //System.out.println(tempPoint.toString());
                     }
                     newPoints[newPoints.length-1] = new Point(newPoints[0].getX(), newPoints[0].getY());
                     // Create a new Polygon using newPoints
                     Polygon tempPoly = new Polygon(newPoints);
-                    // System.out.println(tempPoly.toString());
                     // Add new polygon to each linkedList (unsorted then sorted)
                     unsortedList.append(tempPoly);
                     sortedList.insertInOrder(tempPoly);

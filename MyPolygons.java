@@ -96,21 +96,21 @@ public class MyPolygons {
         reset();
         if(size==0){
             insert(newPoly);
-        }
-        next();
-
-        // check entire list, find where it needs to go
-        // if it does not find a spot where it fits, and the next node is the sentinel, then append it to the list.
-
-        for(int i=0; i<size; i++){
-            if(current.getNext() == sentinel){
-                append(newPoly);
-                break;
-            } else if (current.getPoly().ComesBefore(newPoly) == false){
-                insert(newPoly);
-                break;
-            } else {
-                next();
+        }else{
+            // check entire list, find where it needs to go
+            // if it does not find a spot where it fits, and the next node is the sentinel, then append it to the list.
+            reset();
+            next();
+            for(int i=0; i<size; i++){
+                if (current.getPoly().ComesBefore(newPoly) == true){
+                    insert(newPoly);
+                    break;
+                } else if(current.getNext() == sentinel){
+                    append(newPoly);
+                    break;
+                } else {
+                    next();
+                }
             }
         }
     }
