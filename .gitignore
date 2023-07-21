@@ -1,0 +1,11 @@
+# ignore ALL zip files
+*.zip
+
+# ignore ALL pdf files
+*.pdf
+
+# ignore ALL docx files
+*.docx
+
+# ignore ALL class files
+*.class

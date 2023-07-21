@@ -3,6 +3,7 @@
 // Subject: SENG2200 Programming Languages and Paradigms
 // Assignment 1
 // 03/03/2023
+// Last Modified: 21/7/2023
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 public class A1 {
     public static void main(String args[]){
 
-        File file = new File(args[0]);
+        File file = new File("sample_in.txt");
         try{
             Scanner inputFile = new Scanner(file);
 
